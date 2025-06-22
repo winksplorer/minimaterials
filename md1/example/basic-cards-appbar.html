@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>minimaterials md1 example - Quick Brown Fox News</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="../appbar.css">
+        <link rel="stylesheet" href="../button.css">
+        <link rel="stylesheet" href="../card.css">
+        <link rel="stylesheet" href="../color.css">
+        <link rel="stylesheet" href="../main.css">
+
+        <script defer>
+            function appbarToggle() {
+                const appbar = document.querySelector('.mm-appbar');
+                const colored = 'mm-appbar-colored';
+
+                if (appbar.classList.contains(colored)) appbar.classList.remove(colored);
+                else appbar.classList.add(colored);
+            }
+
+            function darkModeToggle() {
+                const body = document.body;
+                const dark = 'mm-theme-dark';
+                const light = 'mm-theme-light';
+
+                if (body.classList.contains(dark)) body.classList.replace(dark, light);
+                else body.classList.replace(light, dark);
+            }
+        </script>
+    </head>
+    <body class="mm mm-md1 mm-theme-light mm-primary-indigo mm-secondary-blue">
+        <header class="mm-appbar mm-appbar-colored">
+            <div class="mm-appbar-left">
+                <h2 class="mm-appbar-title">Quick Brown Fox News</h2>
+            </div>
+
+            <div class="mm-appbar-right">
+                <button class="mm-appbar-button" onclick="appbarToggle()">toggle colored appbar</button>
+                <button class="mm-appbar-button" onclick="darkModeToggle()">toggle dark/light mode</button>
+            </div>
+        </header>
+
+        <div class="mm-content">
+            <div class="mm-card">
+                <h1>The quick brown fox jumps over the lazy dog</h1>
+                <small>This is subtitle text</small>
+                <p>Reports say that the brown fox was very quick, and that the dog was very lazy.</p>
+                <button class="mm-button-raised">View story</button>
+                <button class="mm-button-flat">Comment</button>
+            </div>
+
+            <div class="mm-card">
+                <h1>The lazy dog jumps over the quick brown fox</h1>
+                <small>This is more subtitle text</small>
+                <p>The alternate history version.</p>
+                <button class="mm-button-raised">View story</button>
+                <button class="mm-button-flat">Comment</button>
+            </div>
+
+            <div class="mm-card">
+                <h1>The lazy brown fox jumps over the quick dog</h1>
+                <small>This is even more subtitle text</small>
+                <p>Mfw I run out of things to say for test strings</p>
+                <button class="mm-button-raised">View story</button>
+                <button class="mm-button-flat">Comment</button>
+            </div>
+        </div>
+    </body>
+</html>

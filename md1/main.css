@@ -1,9 +1,14 @@
 .mm-md1 {
     margin: 0;
+    background-color: var(--mm-bg);
+    color: var(--mm-on-bg);
+
+    transition: background 0.2s ease;
 }
 
 .mm-md1 * {
     font-family: 'Roboto', "San Francisco", 'Segoe UI', 'Helvetica', sans-serif;
+    box-sizing: border-box;
 }
 
 .mm-md1 button, .mm-md1 p {
@@ -15,6 +20,11 @@
     font-weight: 500;
 }
 
+.mm-md1 h1 {
+    font-size: 1.71em;
+    font-weight: 500;
+}
+
 .mm-md1 .mm-content {
-    margin: 0 16px;
+    margin: 8px 8px;
 }
