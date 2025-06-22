@@ -1,0 +1,21 @@
+.mm-primary-indigo {
+    --mm-primary-light: #C5CAE9;
+    --mm-on-primary-light: #000;
+
+    --mm-primary: #3F51B5;
+    --mm-on-primary: #fff;
+
+    --mm-primary-accent: #536DFE;
+    --mm-on-primary-accent: #fff;
+}
+
+.mm-secondary-blue {
+    --mm-secondary-light: #BBDEFB;
+    --mm-on-secondary-light: #000;
+
+    --mm-secondary: #2196F3;
+    --mm-on-secondary: #fff;
+
+    --mm-secondary-accent: #448AFF;
+    --mm-on-secondary-accent: #fff;
+}

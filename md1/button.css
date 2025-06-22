@@ -1,0 +1,54 @@
+.mm-md1 button:hover {
+    cursor: pointer;
+}
+
+.mm-md1 .mm-button-raised {
+    min-width: 64px;
+    min-height: 36px;
+    font-weight: 500;
+
+    border-radius: 2px;
+    border:0;
+
+    text-transform: uppercase;
+
+    padding: 0 14px;
+    margin-right: 8px;
+
+    background-color: var(--mm-secondary);
+    color: var(--mm-on-secondary);
+
+    box-shadow: 0 0px 4px rgba(0, 0, 0, 0.25);
+    transition: box-shadow 0.2s ease;
+}
+
+.mm-md1 .mm-button-raised:active {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+}
+
+.mm-md1 .mm-button-flat{
+    min-width: 64px;
+    min-height: 36px;
+    font-weight: 500;
+
+    border-radius: 2px;
+    border:0;
+
+    text-transform: uppercase;
+
+    padding: 0 14px;
+    margin-right: 8px;
+
+    background: transparent;
+    color: var(--mm-secondary);
+
+    transition: background 0.2s ease;
+}
+
+.mm-md1 .mm-button-flat:hover {
+    background: rgba(153, 153, 153, 0.16)
+}
+
+.mm-md1 .mm-button-flat:active {
+    background: rgba(153, 153, 153, 0.35)
+}

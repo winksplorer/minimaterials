@@ -1,0 +1,21 @@
+.mm-md1 .mm-appbar {
+    width: 100%;
+    height: 56px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 0 16px;
+
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+}
+
+.mm-md1 .mm-appbar-colored {
+    background-color: var(--mm-primary);
+    color: var(--mm-on-primary)
+}
+
+.mm-md1 .mm-appbar-dense {
+    height: 48px;
+}
