@@ -1,0 +1,12 @@
+.mm-md1 * {
+    font-family: 'Roboto', "San Francisco", 'Segoe UI', 'Helvetica', sans-serif;
+}
+
+.mm-md1 button, .mm-md1 p {
+    font-size: 1em;
+}
+
+.mm-md1 h2 {
+    font-size: 1.42em;
+    font-weight: 500;
+}
