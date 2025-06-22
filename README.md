@@ -1,2 +1,74 @@
 # minimaterials
-Tiny implementation of Material Design for use in lightweight web apps
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/winksplorer/minimaterials)
+
+A tiny implementation of Material Design for use in lightweight web apps.
+
+It's similar to Google's Material Design Lite, but minimaterials aims to:
+- Support all Material Design versions (1, 2, and 3/You)
+- Be smaller than Material Design Lite (or at least MD1)
+- Be easier to write code for than Material Design Lite
+
+It does not rely on any JavaScript and does not use NPM. It is simply a bundle of CSS.
+
+# Building
+
+You need GNU `make` and the `minify` CLI (The Go-based one, **NOT** the one from NPM).
+
+To build a specific version of Material Design, simply do `make mdX`, where X is the Material version you need. For example, `make md1` will build the original Material from 2014, and `make md3` will build Material You.
+
+To build all versions of Material Design (1, 2, and 3/You), run `make all`. It will bundle all the Material versions together into a single CSS file.
+
+The result is `mm-X.min.css`, where X is either `md1`, `md2`, `md3`, or `all`.
+
+# TODO
+
+- [X] Build system
+- [X] Bundling
+- [X] Minification
+- [ ] Material Design 1
+    - [X] Typography
+        - [X] Fonts
+        - [X] Scale
+    - [ ] Components
+        - [ ] App bar / Navbar
+            - [X] Basic layout
+            - [X] Shadows
+            - [X] Theme colors (light/dark)
+            - [X] Primary colors
+            - [ ] Secondary colors
+        - [ ] Cards
+            - [X] Theme colors (light/dark)
+            - [X] Shadows
+            - [X] Hover animation
+            - [X] Text
+            - [ ] Images
+        - [ ] Buttons
+            - [ ] Raised buttons
+                - [ ] Theme colors (light/dark)
+                - [ ] Primary colors (with a good system, unlike `.mm-appbar-buton`)
+                - [X] Secondary colors
+                - [X] Shadows
+                - [X] Look basically identical
+                - [ ] Hover effects
+                - [ ] Click effects
+            - [ ] Flat buttons
+                - [ ] Theme colors (light/dark)
+                - [ ] Primary colors
+                - [X] Secondary colors
+                - [X] Look basically identical
+                - [X] Hover effects
+                - [X] Click effects
+            - [ ] Floating action buttons
+        - [ ] Sliders
+        - [ ] Switches
+        - [ ] Lists
+        - [ ] Tables
+        - [ ] Text fields
+        - [ ] Icons
+        - [ ] Tooltips
+        - [ ] Dialogs
+        - [ ] Drawer / Sidebar
+        - [ ] Loading indicators
+        - [ ] Toasts & Snackbars
+- [ ] Material Design 2
+- [ ] Material Design 3/You
