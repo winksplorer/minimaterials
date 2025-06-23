@@ -1,0 +1,34 @@
+name: Test minification + display size
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Build
+        run: make
+        
+      - name: Measure
+        id: sizes
+        run: |
+          echo "MD1SIZE=$(wc -c < mm-md1.min.css | numfmt --to=iec)" >> $GITHUB_ENV
+          echo "MD2SIZE=$(wc -c < mm-md2.min.css | numfmt --to=iec)" >> $GITHUB_ENV
+          echo "MD3SIZE=$(wc -c < mm-md3.min.css | numfmt --to=iec)" >> $GITHUB_ENV
+          echo "ALLSIZE=$(wc -c < mm-all.min.css | numfmt --to=iec)" >> $GITHUB_ENV
+          
+      - name: Set MD1 badge
+        uses: schneegans/dynamic-badges-action@v1
+        with:
+          auth: ${{ secrets.GIST_SECRET }}
+          gistID: d94444342a1848c35de2e2bae7035a16
+          filename: md1size.json
+          label: "md1 size"
+          message: ${{ env.MD1SIZE }}
+          color: "#536DFE"
