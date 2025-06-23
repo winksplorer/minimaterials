@@ -21,11 +21,12 @@ jobs:
       - name: Measure
         id: sizes
         run: |
-          echo "MD1SIZE=$(wc -c < mm-md1.min.css | numfmt --to=iec)" >> $GITHUB_ENV
-          echo "MD2SIZE=$(wc -c < mm-md2.min.css | numfmt --to=iec)" >> $GITHUB_ENV
-          echo "MD3SIZE=$(wc -c < mm-md3.min.css | numfmt --to=iec)" >> $GITHUB_ENV
+          echo "MD1SIZE=$(wc -c < mm-md1.min.css | numfmt --to=iec)" >> $GITHUB_ENV; \
+          echo "MD2SIZE=$(wc -c < mm-md2.min.css | numfmt --to=iec)" >> $GITHUB_ENV; \
+          echo "MD3SIZE=$(wc -c < mm-md3.min.css | numfmt --to=iec)" >> $GITHUB_ENV; \
           echo "ALLSIZE=$(wc -c < mm-all.min.css | numfmt --to=iec)" >> $GITHUB_ENV
-          
+
+      # yes, this is horrifically bad. it *does* work, though...
       - name: Set MD1 badge
         uses: schneegans/dynamic-badges-action@v1.7.0
         with:
@@ -35,3 +36,37 @@ jobs:
           label: "md1 size"
           message: ${{ env.MD1SIZE }}
           color: "#536DFE"
+          style: "flat-square"
+
+      - name: Set MD2 badge
+        uses: schneegans/dynamic-badges-action@v1.7.0
+        with:
+          auth: ${{ secrets.GIST_SECRET }}
+          gistID: d94444342a1848c35de2e2bae7035a16
+          filename: md2size.json
+          label: "md2 size"
+          message: ${{ env.MD2SIZE }}
+          color: "#448AFF"
+          style: "flat-square"
+
+      - name: Set MD3 badge
+        uses: schneegans/dynamic-badges-action@v1.7.0
+        with:
+          auth: ${{ secrets.GIST_SECRET }}
+          gistID: d94444342a1848c35de2e2bae7035a16
+          filename: md3size.json
+          label: "md3 size"
+          message: ${{ env.MD3SIZE }}
+          color: "#40C4FF"
+          style: "flat-square"
+          
+      - name: Set All badge
+        uses: schneegans/dynamic-badges-action@v1.7.0
+        with:
+          auth: ${{ secrets.GIST_SECRET }}
+          gistID: d94444342a1848c35de2e2bae7035a16
+          filename: allsize.json
+          label: "all size"
+          message: ${{ env.ALLSIZE }}
+          color: "#18FFFF"
+          style: "flat-square"
