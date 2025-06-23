@@ -10,15 +10,58 @@
         <link rel="stylesheet" href="../card.css">
         <link rel="stylesheet" href="../color.css">
         <link rel="stylesheet" href="../main.css">
+    </head>
+    <body class="mm mm-md1 mm-theme-light mm-primary-indigo mm-secondary-blue">
+        <header class="mm-appbar mm-appbar-colored">
+            <div class="mm-appbar-left">
+                <h2>Quick Brown Fox News</h2>
+            </div>
 
-        <script defer>
-            function appbarToggle() {
+            <div class="mm-appbar-right">
+                <button class="mm-button-raised" onclick="appbarCycle()">Appbar themed/opposite/colored</button>
+                <button class="mm-button-raised" onclick="darkModeToggle()">Page dark/light</button>
+            </div>
+        </header>
+
+        <div class="mm-content">
+            <div class="mm-card">
+                <h1>The quick brown fox jumps over the lazy dog</h1>
+                <small>Reports say that the brown fox was very quick, and that the dog was very lazy</small>
+                <p>Eyewitnesses describe the scene as “unprecedented,” with one onlooker claiming,
+                    “I’ve never seen such agility from a fox. It just vaulted right over the dog like it was nothing.”
+                    Local authorities have yet to comment, but social media has erupted in debate over whether the fox had prior training
+                    or if the dog was simply too lazy to respond. Some speculate the event could signal a broader trend in fox-dog relations.</p>
+
+                <p>Early reports indicate the incident occurred shortly after dawn in a grassy clearing behind a suburban fence line.
+                    Security camera footage from a nearby backyard, now circulating widely online, shows the fox trotting purposefully before executing
+                    a clean, almost balletic leap over the prone canine. Experts say the footage is "100% real and unedited."</p>
+
+                <p>The dog, later identified as a 7-year-old golden retriever named "Charlie," has declined to comment, instead opting to return to his nap.
+                    Sources close to Charlie claim this kind of behavior is "typical," with one neighbor noting, “That dog wouldn’t budge if the house was on fire.”
+                    Meanwhile, the fox, reportedly named "Blitz," has gained instant celebrity status, with several talent scouts allegedly reaching out via Instagram DMs.</p>
+
+                <p>In response to the viral moment, local schools have added “fox agility awareness” to their PE curriculum, and a commemorative mural
+                    is already underway near the site of the jump. Adding to the growing frenzy, local meteorologists have chimed in with an unexpected
+                    theory: the fox’s leap may have subtly altered regional wind patterns. “You don’t get that kind of hang time without atmospheric
+                    consequences,” one expert claimed, citing a noticeable uptick in leaf displacement across nearby neighborhoods.</p>                    
+
+                <p>As the internet continues to meme the event into legend, one thing remains clear: this wasn’t just a jump. It was a statement.</p>
+                <button class="mm-button-raised" onclick="cloneAndRandomizeCard()">Clone & randomize</button>
+                <button class="mm-button-flat">Do nothing</button>
+            </div>
+        </div>
+
+        <script>
+            function appbarCycle() {
                 const appbar = document.querySelector('.mm-appbar');
+                const opposite = 'mm-appbar-opposite';
                 const colored = 'mm-appbar-colored';
 
-                if (appbar.classList.contains(colored)) appbar.classList.remove(colored);
-                else appbar.classList.add(colored);
+                if (appbar.classList.contains(colored)) appbar.classList.remove(colored); // colored -> themed
+                else if (appbar.classList.contains(opposite)) appbar.classList.replace(opposite, colored); // opposite -> colored
+                else appbar.classList.add(opposite); // themed → opposite
             }
+
 
             function darkModeToggle() {
                 const body = document.body;
@@ -28,44 +71,18 @@
                 if (body.classList.contains(dark)) body.classList.replace(dark, light);
                 else body.classList.replace(light, dark);
             }
+
+            function cloneAndRandomizeCard(count = 1) {
+                const card = document.querySelector('.mm-card');
+                const container = document.querySelector('.mm-content');
+                if (!card || !container) return;
+
+                for (let i = 0; i < count; i++) {
+                    const clone = card.cloneNode(true);
+                    clone.childNodes.forEach(el => el.textContent = el.textContent.split(' ').sort(() => Math.random() - 0.5).join(' '));
+                    container.appendChild(clone);
+                }
+            }
         </script>
-    </head>
-    <body class="mm mm-md1 mm-theme-light mm-primary-indigo mm-secondary-blue">
-        <header class="mm-appbar mm-appbar-colored">
-            <div class="mm-appbar-left">
-                <h2>Quick Brown Fox News</h2>
-            </div>
-
-            <div class="mm-appbar-right">
-                <button class="mm-appbar-button" onclick="appbarToggle()">toggle colored appbar</button>
-                <button class="mm-appbar-button" onclick="darkModeToggle()">toggle dark/light mode</button>
-            </div>
-        </header>
-
-        <div class="mm-content">
-            <div class="mm-card">
-                <h1>The quick brown fox jumps over the lazy dog</h1>
-                <small>This is subtitle text</small>
-                <p>Reports say that the brown fox was very quick, and that the dog was very lazy.</p>
-                <button class="mm-button-raised">View story</button>
-                <button class="mm-button-flat">Comment</button>
-            </div>
-
-            <div class="mm-card">
-                <h1>The lazy dog jumps over the quick brown fox</h1>
-                <small>This is more subtitle text</small>
-                <p>The alternate history version.</p>
-                <button class="mm-button-raised">View story</button>
-                <button class="mm-button-flat">Comment</button>
-            </div>
-
-            <div class="mm-card">
-                <h1>The lazy brown fox jumps over the quick dog</h1>
-                <small>This is even more subtitle text</small>
-                <p>Mfw I run out of things to say for test strings</p>
-                <button class="mm-button-raised">View story</button>
-                <button class="mm-button-flat">Comment</button>
-            </div>
-        </div>
     </body>
 </html>

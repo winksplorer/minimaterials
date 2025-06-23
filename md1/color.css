@@ -1,8 +1,14 @@
+/* holy SHIT this is bad. Refactor ASAP!! */
+
 /* general themes */
 .mm-theme-light {
     --mm-bg: #FAFAFA;
     --mm-card-bg: #FFF;
     --mm-appbar-bg: #F5F5F5;
+
+    --mm-opposite-card-bg: #424242;
+    --mm-opposite-appbar-bg: #212121;
+    --mm-opposite-title: rgba(255, 255, 255, 1);
 
     --mm-title: rgba(0, 0, 0, 0.87);
     --mm-subtitle: rgba(0, 0, 0, 0.54);
@@ -13,6 +19,10 @@
     --mm-bg: #303030;
     --mm-card-bg: #424242;
     --mm-appbar-bg: #212121;
+
+    --mm-opposite-card-bg: #FFF;
+    --mm-opposite-appbar-bg: #F5F5F5;
+    --mm-opposite-title: rgba(0, 0, 0, 0.87);
     
     --mm-title: rgba(255, 255, 255, 1);
     --mm-subtitle: rgba(255, 255, 255, 0.7);

@@ -2,7 +2,7 @@
     cursor: pointer;
 }
 
-.mm-md1 .mm-button-raised, .mm-md1 .mm-appbar-button {
+.mm-md1 .mm-button-raised {
     min-width: 64px;
     min-height: 36px;
     font-weight: 500;
@@ -18,22 +18,27 @@
     background-color: var(--mm-secondary);
     color: var(--mm-on-secondary);
 
-    box-shadow: 0 0px 4px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
     transition: box-shadow 0.2s ease, background 0.2s ease;;
 }
 
-.mm-md1 .mm-appbar-button {
+.mm-md1 .mm-appbar .mm-button-raised {
     background-color: var(--mm-card-bg);
     color: var(--mm-title)
 }
 
-.mm-md1 .mm-appbar-colored .mm-appbar-button {
+.mm-md1 .mm-appbar-colored .mm-button-raised {
     background-color: var(--mm-primary-accent);
     color: var(--mm-on-primary-accent);
 }
 
-.mm-md1 .mm-button-raised:active, .mm-md1 .mm-appbar-button:active {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+.mm-md1 .mm-appbar-opposite .mm-button-raised {
+    background-color: var(--mm-opposite-card-bg);
+    color: var(--mm-opposite-title);
+}
+
+.mm-md1 .mm-button-raised:hover {
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
 }
 
 .mm-md1 .mm-button-flat {

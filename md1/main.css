@@ -1,13 +1,13 @@
 .mm-md1 {
     margin: 0;
     background-color: var(--mm-bg);
-    color: var(--mm-on-bg);
+    color: var(--mm-paragraph);
 
     transition: background 0.2s ease;
 }
 
 .mm-md1 * {
-    font-family: 'Roboto', "San Francisco", 'Segoe UI', 'Helvetica', sans-serif;
+    font-family: 'Roboto', 'San Francisco', 'Segoe UI', 'Helvetica', sans-serif;
     box-sizing: border-box;
 }
 

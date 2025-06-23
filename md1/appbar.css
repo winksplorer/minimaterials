@@ -6,6 +6,9 @@
     justify-content: space-between;
     align-items: center;
 
+    position:sticky;
+    top:0;
+
     padding: 0 16px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
 
@@ -16,5 +19,10 @@
 
 .mm-md1 .mm-appbar-colored {
     background-color: var(--mm-primary);
-    color: var(--mm-on-primary)
+    color: var(--mm-on-primary);
+}
+
+.mm-md1 .mm-appbar-opposite {
+    background-color: var(--mm-opposite-appbar-bg);
+    color: var(--mm-opposite-title);
 }

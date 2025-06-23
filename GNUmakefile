@@ -22,4 +22,4 @@ screenshots: $(SCREENSHOTS)
 
 %.png: md1/example/%.html
 	@echo "SCRSHOT $< -> doc/screenshot/$@"
-	@chromium --headless --disable-gpu --window-size=1280x1024 --screenshot=./doc/images/$@ file://$(PWD)/$< >/dev/null 2>&1
+	@chromium --headless --disable-gpu --window-size=1024x768 --screenshot=./doc/images/$@ file://$(PWD)/$< >/dev/null 2>&1
