@@ -1,6 +1,11 @@
 # minimaterials
-![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/winksplorer/minimaterials?style=flat-square&color=%23536DFE)
-
+<div>
+<img src="https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/winksplorer/d94444342a1848c35de2e2bae7035a16/raw/md1size.json" alt="md1 size badge">
+<img src="https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/winksplorer/d94444342a1848c35de2e2bae7035a16/raw/md2size.json" alt="md2 size badge">
+<img src="https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/winksplorer/d94444342a1848c35de2e2bae7035a16/raw/md3size.json" alt="md3 size badge">
+<img src="https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/winksplorer/d94444342a1848c35de2e2bae7035a16/raw/allsize.json" alt="total size badge">
+</div>
+<sup>*After minification</sup>
 
 A tiny implementation of Material Design for use in lightweight web apps.
 
