@@ -1,6 +1,6 @@
 MINIFIER ?= minify
 VARIANTS := md1 md2 md3
-EXAMPLES := $(shell find md1/example -type f -name '*.html')
+EXAMPLES := $(shell find doc/examples -type f -name '*.html')
 SCREENSHOTS := $(patsubst %.html,%.png,$(notdir $(EXAMPLES)))
 
 .PHONY: cleam all $(VARIANTS) combine screenshots 
@@ -8,18 +8,21 @@ SCREENSHOTS := $(patsubst %.html,%.png,$(notdir $(EXAMPLES)))
 all: $(VARIANTS) combine
 
 clean:
-	rm mm-*.min.css
+	rm mm-*.min.css mm-*.min.js
 
 $(VARIANTS):
-	@echo " MINIFY ($(MINIFIER)) $@"
+	@echo " MINIFY ($(MINIFIER)) $@/*.css $@/*.js"
 	@$(MINIFIER) --type=css -b $@/*.css -o mm-$@.min.css
+	@$(MINIFIER) --type=js -b $@/*.js -o mm-$@.min.js
 
 combine:
-	@echo "COMBINE mm-md1.min.css + mm-md2.min.css + mm-md3.min.css -> mm-all.min.css"
+	@echo "COMBINE mm-*.min.css -> mm-all.min.css"
 	@cat mm-*.min.css > mm-all.min.css
+	@echo "COMBINE mm-*.min.js -> mm-all.min.js"
+	@cat mm-*.min.js > mm-all.min.js
 
 screenshots: $(SCREENSHOTS)
 
-%.png: md1/example/%.html
-	@echo "SCRSHOT $< -> doc/screenshot/$@"
+%.png: doc/examples/%.html
+	@echo "SCRSHOT $< -> doc/images/$@"
 	@chromium --headless --disable-gpu --window-size=1024x768 --screenshot=./doc/images/$@ file://$(PWD)/$< >/dev/null 2>&1

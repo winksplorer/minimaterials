@@ -21,10 +21,10 @@ jobs:
       - name: Measure
         id: sizes
         run: |
-          echo "MD1SIZE=$(wc -c < mm-md1.min.css | numfmt --to=iec)" >> $GITHUB_ENV; \
-          echo "MD2SIZE=$(wc -c < mm-md2.min.css | numfmt --to=iec)" >> $GITHUB_ENV; \
-          echo "MD3SIZE=$(wc -c < mm-md3.min.css | numfmt --to=iec)" >> $GITHUB_ENV; \
-          echo "ALLSIZE=$(wc -c < mm-all.min.css | numfmt --to=iec)" >> $GITHUB_ENV
+          echo "MD1SIZE=$(cat mm-md1.min* | wc -c | numfmt --to=iec)" >> $GITHUB_ENV; \
+          echo "MD2SIZE=$(cat mm-md2.min* | wc -c | numfmt --to=iec)" >> $GITHUB_ENV; \
+          echo "MD3SIZE=$(cat mm-md3.min* | wc -c | numfmt --to=iec)" >> $GITHUB_ENV; \
+          echo "ALLSIZE=$(cat mm-all.min* | wc -c | numfmt --to=iec)" >> $GITHUB_ENV
 
       # yes, this is horrifically bad. it *does* work, though...
       - name: Set MD1 badge
