@@ -25,4 +25,4 @@ screenshots: $(SCREENSHOTS)
 
 %.png: doc/examples/%.html
 	@echo "SCRSHOT $< -> doc/images/$@"
-	@chromium --headless --disable-gpu --window-size=1024x768 --screenshot=./doc/images/$@ file://$(PWD)/$< >/dev/null 2>&1
+	@chromium --headless --disable-gpu --window-size=1024x768 --virtual-time-budget=5000 --screenshot=./doc/images/$@ file://$(PWD)/$< >/dev/null 2>&1

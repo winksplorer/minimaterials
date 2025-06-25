@@ -1,7 +1,9 @@
 .mm-md1 .mm-card {
     border-radius: 2px;
     padding: 16px;
-    margin-bottom: 8px;
+
+    display: flex;
+    flex-direction: column;
 
     background-color: var(--mm-card-bg);
 
@@ -15,12 +17,36 @@
 
 .mm-md1 .mm-card h1 {
     margin-top: 4px;
+    margin-bottom: -8px;
     color: var(--mm-title);
 }
 
 .mm-md1 .mm-card small {
+    margin-top: 10px;
+    margin-bottom: -8px;
     display: block;
-    margin-top: -12px;
-    margin-bottom: -6px;
     color: var(--mm-subtitle);
+}
+
+.mm-md1 .mm-card p {
+    /* margin-bottom: 8px; */
+}
+
+.mm-md1 .mm-card .mm-card-bottom {
+    margin-top: auto;
+
+    display: flex;
+    gap: 8px;
+}
+
+.mm-md1 .mm-card .mm-card-image {
+    /* cursed? */
+    margin: -16px;
+    margin-bottom: 8px;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+}
+
+.mm-md1 .mm-card-pwidth {
+    width: 100% !important;
 }

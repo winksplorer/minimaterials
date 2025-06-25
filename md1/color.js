@@ -75,7 +75,16 @@ md1.bodyObserver = new MutationObserver(muts => {
         attributeFilter: ['class']
     });
 
+    // fucking AWFUL hack: disable transitions before setting initial palettes
+    const style = document.createElement('style');
+    style.textContent = `* { transition: none !important; }`;
+    document.head.appendChild(style);
+
     // load inital palettes
+    // document.body.style.setProperty("transition", "none", "important");
     md1.updatePalette('primary');
     md1.updatePalette('secondary');
+    
+    // re-enable transitions
+    requestAnimationFrame(() => style.remove());
 })()

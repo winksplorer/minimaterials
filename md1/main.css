@@ -26,5 +26,14 @@
 }
 
 .mm-md1 .mm-content {
-    margin: 8px 8px;
+    margin: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.mm-md1 .mm-content-inline > * {
+    flex: 1 1 auto;
+    width: min-content;
+    min-width: 300px;
 }

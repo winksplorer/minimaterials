@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>minimaterials md1 example - Dynamic Colors & Card Images</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="../../mm-md1.min.css">
+        <script src="../../mm-md1.min.js" defer></script>
+    </head>
+    <body class="mm mm-md1 mm-theme-light mm-primary-red mm-secondary-orange">
+        <header class="mm-appbar mm-appbar-colored">
+            <div class="mm-appbar-left">
+                <h2>Dynamic Colors & Card Image Testing</h2>
+            </div>
+
+            <div class="mm-appbar-right">
+                <button class="mm-button-raised" onclick="appbarCycle()">Appbar themed/opposite/colored</button>
+                <button class="mm-button-raised" onclick="darkModeToggle()">Page dark/light</button>
+            </div>
+        </header>
+
+        <div class="mm-content mm-content-inline">
+            <div class="mm-card mm-card-pwidth">
+                <h1>What to do here</h1>
+                <small>Small text here</small>
+                <p>This is an example website for testing the dynamic color system in minimaterials MD1.
+                    This is also used to test card images. This page uses canvas elements for the images,
+                    so it won't work without JavaScript. I HATE CSS!!</p>
+            </div>
+
+            <div class="mm-card" data-color="red">
+                <canvas class="mm-card-image" height="100px"></canvas>
+                <h1>Red</h1>
+                <!-- <small></small> -->
+                <p>This is a color.</p>
+                <div class="mm-card-bottom">
+                    <button class="mm-button-flat" onclick="setPalette('primary', this)">Set as primary</button>
+                    <button class="mm-button-flat" onclick="setPalette('secondary', this)">Set as secondary</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- button functions -->
+        <script>
+            function appbarCycle() {
+                const appbar = document.querySelector('.mm-appbar');
+                const opposite = 'mm-appbar-opposite';
+                const colored = 'mm-appbar-colored';
+
+                if (appbar.classList.contains(colored)) appbar.classList.remove(colored); // colored -> themed
+                else if (appbar.classList.contains(opposite)) appbar.classList.replace(opposite, colored); // opposite -> colored
+                else appbar.classList.add(opposite); // themed → opposite
+            }
+
+            darkModeToggle = () => ['mm-theme-dark', 'mm-theme-light'].forEach(c => document.body.classList.toggle(c));
+
+            function setPalette(role, el) {
+                Array.from(document.body.classList).forEach(cl => {
+                    if (cl.includes(role)) {
+                        document.body.classList.remove(cl);
+                        document.body.classList.add(`mm-${role}-${el.parentElement.parentElement.dataset.color}`);
+                    }
+                });
+            }
+        </script>
+
+        <!-- canvas handler & card cloner/page builder -->
+        <script defer>
+            (async () => {
+                await new Promise(r => {
+                    const id = setInterval(() =>
+                        Object.keys(window.md1.colors).length === 19 && (clearInterval(id), r()), 50);
+                });
+
+                // card cloner
+                const t = document.querySelector('[data-color]');           // template element
+                const p = t.parentNode;
+                p.removeChild(t);                                           // detach template
+                Object.keys(window.md1.colors).forEach(k => {
+                    const e = t.cloneNode(true);
+                    e.dataset.color = k;                                      // set [data-color]
+                    e.querySelector('h1').textContent = k[0].toUpperCase()+k.slice(1).replace('-', ' ');
+                    p.appendChild(e);
+                });
+
+                // canvas handler
+                Array.from(document.querySelectorAll('canvas')).forEach(cv => {
+                    const ctx = cv.getContext('2d');
+                    ctx.fillStyle= window.md1.colors[cv.parentElement.dataset.color]['500'];
+                    ctx.fillRect(0, 0, cv.width, cv.height);
+                });
+            })();
+        </script>
+    </body>
+</html>

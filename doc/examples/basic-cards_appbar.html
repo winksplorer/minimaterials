@@ -43,8 +43,10 @@
                     consequences,” one expert claimed, citing a noticeable uptick in leaf displacement across nearby neighborhoods.</p>                    
 
                 <p>As the internet continues to meme the event into legend, one thing remains clear: this wasn’t just a jump. It was a statement.</p>
-                <button class="mm-button-raised" onclick="cloneAndRandomizeCard()">Clone & randomize</button>
-                <button class="mm-button-flat">Do nothing</button>
+                <div class="mm-card-bottom">
+                    <button class="mm-button-raised" onclick="cloneAndRandomizeCard()">Clone & randomize</button>
+                    <button class="mm-button-flat">Do nothing</button>
+                </div>
             </div>
         </div>
 
@@ -60,24 +62,20 @@
             }
 
 
-            function darkModeToggle() {
-                const body = document.body;
-                const dark = 'mm-theme-dark';
-                const light = 'mm-theme-light';
+            darkModeToggle = () => ['mm-theme-dark', 'mm-theme-light'].forEach(c => document.body.classList.toggle(c));
 
-                if (body.classList.contains(dark)) body.classList.replace(dark, light);
-                else body.classList.replace(light, dark);
-            }
+            function cloneAndRandomizeCard(n = 1) {
+                const src = document.querySelector('.mm-card');
+                const dst = document.querySelector('.mm-content');
+                if (!src || !dst) return;
 
-            function cloneAndRandomizeCard(count = 1) {
-                const card = document.querySelector('.mm-card');
-                const container = document.querySelector('.mm-content');
-                if (!card || !container) return;
+                const shuffle = (t) => t.split(/\s+/).sort(() => Math.random() - .5).join(' ');
 
-                for (let i = 0; i < count; i++) {
-                    const clone = card.cloneNode(true);
-                    clone.childNodes.forEach(el => el.textContent = el.textContent.split(' ').sort(() => Math.random() - 0.5).join(' '));
-                    container.appendChild(clone);
+                while (n--) {
+                    const clone  = src.cloneNode(true),
+                        walker = document.createTreeWalker(clone, NodeFilter.SHOW_TEXT);
+                    for (let node; node = walker.nextNode();) node.textContent = shuffle(node.textContent);
+                    dst.appendChild(clone);
                 }
             }
         </script>

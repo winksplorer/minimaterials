@@ -4,8 +4,12 @@
 
 .mm-md1 .mm-button-raised {
     min-width: 64px;
+    width: fit-content;
+
     min-height: 36px;
     font-weight: 500;
+
+    margin-right: 8px;
 
     border-radius: 2px;
     border:0;
@@ -13,7 +17,6 @@
     text-transform: uppercase;
 
     padding: 0 14px;
-    margin-right: 8px;
 
     background-color: var(--mm-secondary-500);
     color: white;
@@ -28,7 +31,8 @@
 
 .mm-md1 .mm-appbar .mm-button-raised {
     background-color: var(--mm-card-bg);
-    color: var(--mm-title)
+    color: var(--mm-title);
+    margin-left: 8px;
 }
 
 .mm-md1 .mm-appbar-colored .mm-button-raised {
@@ -52,21 +56,26 @@
 
 .mm-md1 .mm-button-flat {
     min-width: 64px;
+    width: fit-content;
+
     min-height: 36px;
     font-weight: 500;
+
+    margin-left: -8px;
+    margin-right: 8px;
 
     border-radius: 2px;
     border:0;
 
     text-transform: uppercase;
+    white-space: nowrap;
 
-    padding: 0 14px;
-    margin-right: 8px;
+    padding: 0 8px;
 
     background: transparent;
     color: var(--mm-secondary-500);
 
-    transition: background 0.2s ease;
+    transition: background 0.2s ease, color 0.2s ease;
 }
 
 .mm-md1 .mm-button-flat:hover {
