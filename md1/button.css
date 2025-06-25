@@ -15,11 +15,15 @@
     padding: 0 14px;
     margin-right: 8px;
 
-    background-color: var(--mm-secondary);
-    color: var(--mm-on-secondary);
+    background-color: var(--mm-secondary-500);
+    color: white;
 
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
     transition: box-shadow 0.2s ease, background 0.2s ease;;
+}
+
+.mm-md1 .mm-button-raised:active {
+    background-color: var(--mm-secondary-700)
 }
 
 .mm-md1 .mm-appbar .mm-button-raised {
@@ -28,9 +32,14 @@
 }
 
 .mm-md1 .mm-appbar-colored .mm-button-raised {
-    background-color: var(--mm-primary-accent);
+    background-color: var(--mm-primary-a200);
     color: var(--mm-on-primary-accent);
 }
+
+.mm-md1 .mm-appbar-colored .mm-button-raised:active {
+    background-color: var(--mm-primary-700);
+}
+
 
 .mm-md1 .mm-appbar-opposite .mm-button-raised {
     background-color: var(--mm-opposite-card-bg);
@@ -55,7 +64,7 @@
     margin-right: 8px;
 
     background: transparent;
-    color: var(--mm-secondary);
+    color: var(--mm-secondary-500);
 
     transition: background 0.2s ease;
 }

@@ -18,8 +18,8 @@
 }
 
 .mm-md1 .mm-appbar-colored {
-    background-color: var(--mm-primary);
-    color: var(--mm-on-primary);
+    background-color: var(--mm-primary-500);
+    color: white;
 }
 
 .mm-md1 .mm-appbar-opposite {

@@ -12,29 +12,70 @@ qzA/nyg1kxojfoye/1Nt/j1a/jBP/gRibHVlDuPy/bve+5DK+WS19kKl9SGW8x6I5Rl20hVlwA1HoYKx
 /z0A3SwABWJyb3duCu/r6dfMyLyqpKGIf41uY3lVSG1MQV1AN040Lj4nIwRncmF5Cvr6+vX19e7u7uDg4L29vZ6ennV1dWFhYUJCQiEhIQlibHVlLWdyYXkK7O/xz9jcsL7FkKSueJCcYH2LVG56RVpk
 N0dPJjI4+A==`.trim();
 
+md1.colors = md1.colors || {};
+md1.updatePalette = function(role) {
+    if (role !== 'primary' && role !== 'secondary') throw new Error(`minimaterials: cannot update ${role} colors, as the role does not exist`);
 
+    let family = (
+        document.body.className.match(
+            role === 'primary' ? /\bmm-primary-([^\s]+)/ : /\bmm-secondary-([^\s]+)/
+        ) || [])[1] || null;
+    
+    if (!(family in md1.colors)) throw new Error(`minimaterials: cannot update ${role} colors, as colorfamily '${family}' does not exist`);
 
-const payload = Uint8Array.from(atob(md1.encodedColors), c => c.charCodeAt(0));
-const view = new DataView(payload.buffer, payload.byteOffset, payload.byteLength);
-const dec = new TextDecoder();
-
-let checksum = 0;
-for (const byte of payload) checksum ^= byte;
-if (checksum !== 0) throw new Error('colors are corrupted');
-
-for (let off = 0; off < payload.length-1;) {
-    let familyNameLength = view.getUint8(off++);
-    let familyName = dec.decode(payload.subarray(off, off+familyNameLength));
-    off += familyNameLength;
-
-    let familyShades = view.getUint8(off++);
-    console.log(`decoded color family "${familyName}" has ${familyShades} shades`);
-    for (let shade = 0; shade < familyShades; shade++) {
-        let r = view.getUint8(off++);
-        let g = view.getUint8(off++);
-        let b = view.getUint8(off++);
-
-        console.log(`\x1b[38;2;${r};${g};${b}m${md1.shadeId(shade)}: ${md1.rgb2hex([r,g,b])}\x1b[0m`);
-    }
-    // off += familyShades*3;
+    for (const shade of Object.keys(md1.colors[family]))
+        document.body.style.setProperty(`--mm-${role}-${shade}`, md1.colors[family][shade]);
 }
+
+md1.bodyObserver = new MutationObserver(muts => {
+    for (const mut of muts) {
+        let oldPrimary = (mut.oldValue.match(/\bmm-primary-([^\s]+)/) || [])[1] || null;
+        let oldSecondary = (mut.oldValue.match(/\bmm-secondary-([^\s]+)/) || [])[1] || null;
+
+        let newPrimary  = (mut.target.className.match(/\bmm-primary-([^\s]+)/) || [])[1] || null;
+        let newSecondary = (mut.target.className.match(/\bmm-secondary-([^\s]+)/) || [])[1] || null;
+
+        // do we need to update colors?
+        if (oldPrimary !== newPrimary) md1.updatePalette('primary');
+        if (oldSecondary !== newSecondary) md1.updatePalette('secondary');
+    }
+});
+
+(function(){
+    const payload = Uint8Array.from(atob(md1.encodedColors), c => c.charCodeAt(0));
+    const view = new DataView(payload.buffer, payload.byteOffset, payload.byteLength);
+
+    // checksum calculation
+    let checksum = 0;
+    for (const byte of payload) checksum ^= byte;
+    if (checksum !== 0) throw new Error('colors are corrupted');
+
+    // initial load - "cache" all color data in object notation
+    for (let off = 0; off < payload.length-1;) {
+        // get colorfamily name (and it's length)
+        const familyNameLength = view.getUint8(off++);
+        const familyName = (new TextDecoder()).decode(payload.subarray(off, off+familyNameLength));
+        off += familyNameLength;
+
+        md1.colors[familyName] = md1.colors[familyName] || {};
+
+        // go through shades and repack them into string hex (they were encoded as literal hex)
+        for (let shade = 0, familyShades = view.getUint8(off++); shade < familyShades; shade++)
+            md1.colors[familyName][md1.shadeId(shade)] = md1.rgb2hex([
+                view.getUint8(off++), // r
+                view.getUint8(off++), // g
+                view.getUint8(off++)  // b
+            ]);
+    }
+
+    // set up observer
+    md1.bodyObserver.observe(document.body, {
+        attributes: true,
+        attributeOldValue: true,
+        attributeFilter: ['class']
+    });
+
+    // load inital palettes
+    md1.updatePalette('primary');
+    md1.updatePalette('secondary');
+})()
