@@ -32,7 +32,6 @@
             <div class="mm-card" data-color="red">
                 <canvas class="mm-card-image" height="100px"></canvas>
                 <h1>Red</h1>
-                <!-- <small></small> -->
                 <p>This is a color.</p>
                 <div class="mm-card-bottom">
                     <button class="mm-button-flat" onclick="setPalette('primary', this)">Set as primary</button>
@@ -57,10 +56,7 @@
 
             function setPalette(role, el) {
                 Array.from(document.body.classList).forEach(cl => {
-                    if (cl.includes(role)) {
-                        document.body.classList.remove(cl);
-                        document.body.classList.add(`mm-${role}-${el.parentElement.parentElement.dataset.color}`);
-                    }
+                    if (cl.includes(role)) document.body.classList.replace(cl, `mm-${role}-${el.parentElement.parentElement.dataset.color}`);
                 });
             }
         </script>
@@ -74,20 +70,19 @@
                 });
 
                 // card cloner
-                const t = document.querySelector('[data-color]');           // template element
-                const p = t.parentNode;
-                p.removeChild(t);                                           // detach template
-                Object.keys(window.md1.colors).forEach(k => {
-                    const e = t.cloneNode(true);
-                    e.dataset.color = k;                                      // set [data-color]
-                    e.querySelector('h1').textContent = k[0].toUpperCase()+k.slice(1).replace('-', ' ');
-                    p.appendChild(e);
+                const template = document.querySelector('[data-color]');
+                Object.keys(window.md1.colors).forEach(color => {
+                    if (color === 'red') return;
+                    const clone = template.cloneNode(true);
+                    clone.dataset.color = color;
+                    clone.querySelector('h1').textContent = color[0].toUpperCase()+color.slice(1).replace('-', ' ');
+                    template.parentElement.appendChild(clone);
                 });
 
                 // canvas handler
                 Array.from(document.querySelectorAll('canvas')).forEach(cv => {
                     const ctx = cv.getContext('2d');
-                    ctx.fillStyle= window.md1.colors[cv.parentElement.dataset.color]['500'];
+                    ctx.fillStyle = window.md1.colors[cv.parentElement.dataset.color]['500'];
                     ctx.fillRect(0, 0, cv.width, cv.height);
                 });
             })();

@@ -1,5 +1,7 @@
 .mm-md1 {
+    height: 100%;
     margin: 0;
+
     background-color: var(--mm-bg);
     color: var(--mm-paragraph);
 
@@ -34,6 +36,5 @@
 
 .mm-md1 .mm-content-inline > * {
     flex: 1 1 auto;
-    width: min-content;
     min-width: 300px;
 }

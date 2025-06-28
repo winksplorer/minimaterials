@@ -26,3 +26,7 @@
     background-color: var(--mm-opposite-appbar-bg);
     color: var(--mm-opposite-title);
 }
+
+.mm-md1 h2 {
+    margin: 0;
+}
