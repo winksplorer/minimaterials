@@ -8,9 +8,8 @@
     transition: background 0.2s ease;
 }
 
-.mm-md1 * {
+.mm-md1, .mm-md1 button {
     font-family: 'Roboto', 'San Francisco', 'Segoe UI', 'Helvetica', sans-serif;
-    box-sizing: border-box;
 }
 
 .mm-md1 button, .mm-md1 p {
@@ -34,7 +33,7 @@
     gap: 8px;
 }
 
-.mm-md1 .mm-content-inline > * {
+.mm-md1 .mm-content-grid > * {
     flex: 1 1 auto;
     min-width: 300px;
 }

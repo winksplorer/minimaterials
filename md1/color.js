@@ -1,6 +1,12 @@
 window.md1  = window.md1 || {};
-md1.rgb2hex = ([r,g,b]) => '#'+[r,g,b].map(x=>x.toString(16).padStart(2,'0')).join('');
+md1.rgb2hex = ([r,g,b]) => '#' + [r,g,b].map(x => x.toString(16).padStart(2, '0')).join('');
 md1.shadeId = i => i < 10 ? (i * 100).toString() : 'a' + [100,200,400,700][i-10];
+md1.getColorClass = (joined, role) => (joined.match(new RegExp(`\\bmm-${role}-([^\\s]+)`)) || [])[1] || null;
+md1.shouldUseWhiteText = hex => {
+    const [r, g, b] = hex.match(/\w\w/g).map(x => parseInt(x, 16));
+    return (r * 299 + g * 587 + b * 114) / 1000 < 128;
+};
+
 md1.encodedColors = `
 A3JlZA7/6+7/zdLvmprlc3PvU1D0QzblOTXTLy/GKCi3HBz/ioD/UlL/F0TVAAAEcGluaw785Oz4u9D0j7HwYpLsQHrpHmPYG2DCGFutFFeIDk//gKv/QIH1AFfFEWIGcHVycGxlDvPl9eG+586T2Lpo
 yKtHvJwnsI4kqnsfomobmkoUjOqA/OBA+9UA+aoA/wtkZWVwLXB1cnBsZQ7t5/bRxOmznduVdc1+V8JnOrdeNbFRLahFJ6AxG5KziP98Tf9lH/9iAOoGaW5kaWdvDujq9sXK6Z+o2nmGy1xrwD9RtTlJ
@@ -14,30 +20,30 @@ N0dPJjI4+A==`.trim();
 
 md1.colors = md1.colors || {};
 md1.updatePalette = function(role) {
+    // check for valid role, and get the requested family
     if (role !== 'primary' && role !== 'secondary') throw new Error(`minimaterials: cannot update ${role} colors, as the role does not exist`);
+    let family = md1.getColorClass(document.body.className, role);
 
-    let family = (
-        document.body.className.match(
-            role === 'primary' ? /\bmm-primary-([^\s]+)/ : /\bmm-secondary-([^\s]+)/
-        ) || [])[1] || null;
-    
+    // check if the family exists
     if (!(family in md1.colors)) throw new Error(`minimaterials: cannot update ${role} colors, as colorfamily '${family}' does not exist`);
 
+    // set css vars accordingly
     for (const shade of Object.keys(md1.colors[family]))
         document.body.style.setProperty(`--mm-${role}-${shade}`, md1.colors[family][shade]);
+
+    // set css vars for whether white/black text should be used
+    for (const shade of Object.keys(md1.colors[family]))
+        document.body.style.setProperty(`--mm-on-${role}-${shade}`, md1.shouldUseWhiteText(md1.colors[family][shade]) ? '#fff' : "#000");
 }
 
 md1.bodyObserver = new MutationObserver(muts => {
     for (const mut of muts) {
-        let oldPrimary = (mut.oldValue.match(/\bmm-primary-([^\s]+)/) || [])[1] || null;
-        let oldSecondary = (mut.oldValue.match(/\bmm-secondary-([^\s]+)/) || [])[1] || null;
+        // check if we need to update colors
+        if (md1.getColorClass(mut.oldValue, 'primary') !== md1.getColorClass(mut.target.className, 'primary'))
+            md1.updatePalette('primary');
 
-        let newPrimary  = (mut.target.className.match(/\bmm-primary-([^\s]+)/) || [])[1] || null;
-        let newSecondary = (mut.target.className.match(/\bmm-secondary-([^\s]+)/) || [])[1] || null;
-
-        // do we need to update colors?
-        if (oldPrimary !== newPrimary) md1.updatePalette('primary');
-        if (oldSecondary !== newSecondary) md1.updatePalette('secondary');
+        if (md1.getColorClass(mut.oldValue, 'secondary') !== md1.getColorClass(mut.target.className, 'secondary'))
+            md1.updatePalette('secondary');
     }
 });
 
@@ -81,7 +87,6 @@ md1.bodyObserver = new MutationObserver(muts => {
     document.head.appendChild(style);
 
     // load inital palettes
-    // document.body.style.setProperty("transition", "none", "important");
     md1.updatePalette('primary');
     md1.updatePalette('secondary');
     

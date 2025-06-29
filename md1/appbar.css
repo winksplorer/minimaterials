@@ -9,6 +9,8 @@
     position:sticky;
     top:0;
 
+    box-sizing: border-box;
+
     padding: 0 16px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
 
@@ -19,7 +21,7 @@
 
 .mm-md1 .mm-appbar-colored {
     background-color: var(--mm-primary-500);
-    color: white;
+    color: var(--mm-on-primary-500);
 }
 
 .mm-md1 .mm-appbar-opposite {

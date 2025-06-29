@@ -5,10 +5,7 @@ const enc   = new TextEncoder();
 let colors  = {};
 const bytes = [];
 
-const hex2rgb = h => {
-    h = h.replace('#',''); if (h.length === 3) h = [...h].map(c=>c+c).join('');
-    const n = parseInt(h,16); return [n>>16&255, n>>8&255, n&255];
-};
+const hex2rgb = hex => hex.match(/\w\w/g).map(x => parseInt(x, 16));
 
 for (const [,family,shade,hex] of vars) {
     colors[family] ??= {};

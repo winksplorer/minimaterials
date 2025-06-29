@@ -1,28 +1,29 @@
-.mm-md1 button:hover {
+.mm-md1 .mm-button-raised:hover, .mm-md1 .mm-button-flat:hover {
     cursor: pointer;
 }
 
-.mm-md1 .mm-button-raised {
+.mm-md1 .mm-button-raised, .mm-md1 .mm-button-flat {
     min-width: 64px;
     width: fit-content;
-
     min-height: 36px;
-    font-weight: 500;
 
     margin-right: 8px;
 
-    border-radius: 2px;
-    border:0;
-
+    font-weight: 500;
     text-transform: uppercase;
 
+    border-radius: 2px;
+    border:0;
+}
+
+.mm-md1 .mm-button-raised {
     padding: 0 14px;
 
     background-color: var(--mm-secondary-500);
     color: white;
 
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
-    transition: box-shadow 0.2s ease, background 0.2s ease;;
+    transition: box-shadow 0.2s ease, background 0.2s ease;
 }
 
 .mm-md1 .mm-button-raised:active {
@@ -37,7 +38,7 @@
 
 .mm-md1 .mm-appbar-colored .mm-button-raised {
     background-color: var(--mm-primary-a200);
-    color: var(--mm-on-primary-accent);
+    color: var(--mm-on-primary-a700);
 }
 
 .mm-md1 .mm-appbar-colored .mm-button-raised:active {
@@ -55,33 +56,19 @@
 }
 
 .mm-md1 .mm-button-flat {
-    min-width: 64px;
-    width: fit-content;
-
-    min-height: 36px;
-    font-weight: 500;
-
     margin-left: -8px;
-    margin-right: 8px;
-
-    border-radius: 2px;
-    border:0;
-
-    text-transform: uppercase;
-    white-space: nowrap;
-
     padding: 0 8px;
 
-    background: transparent;
+    background-color: transparent;
     color: var(--mm-secondary-500);
 
     transition: background 0.2s ease, color 0.2s ease;
 }
 
 .mm-md1 .mm-button-flat:hover {
-    background: rgba(153, 153, 153, 0.16)
+    background-color: rgba(153, 153, 153, 0.16)
 }
 
 .mm-md1 .mm-button-flat:active {
-    background: rgba(153, 153, 153, 0.35)
+    background-color: rgba(153, 153, 153, 0.35)
 }
