@@ -24,11 +24,6 @@
     color: var(--mm-on-primary-500);
 }
 
-.mm-md1 .mm-appbar-opposite {
-    background-color: var(--mm-opposite-appbar-bg);
-    color: var(--mm-opposite-title);
-}
-
-.mm-md1 h2 {
+.mm-md1 .mm-appbar h2 {
     margin: 0;
 }

@@ -5,10 +5,10 @@
 <img src="https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/winksplorer/d94444342a1848c35de2e2bae7035a16/raw/md3size.json" alt="md3 size badge">
 <img src="https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/winksplorer/d94444342a1848c35de2e2bae7035a16/raw/allsize.json" alt="total size badge">
 </div>
-<sup>*After minification</sup>
+<sup>*After minification, uncompressed</sup>
 <hr>
 
-A tiny implementation of Material Design for use in lightweight web apps.
+A tiny implementation of Material Design 1/2/3 for use in lightweight web apps. It's not exactly to spec, but it's close enough in my opinion.
 
 It's similar to Google's Material Design Lite, but minimaterials aims to:
 - Support all Material Design versions (1, 2, and 3/You)

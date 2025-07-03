@@ -15,7 +15,7 @@
             </div>
 
             <div class="mm-appbar-right">
-                <button class="mm-button-raised" onclick="appbarCycle()">Appbar themed/opposite/colored</button>
+                <button class="mm-button-raised" onclick="appbarCycle()">Appbar dark/light/colored</button>
                 <button class="mm-button-raised" onclick="darkModeToggle()">Page dark/light</button>
             </div>
         </header>
@@ -53,12 +53,13 @@
         <script>
             function appbarCycle() {
                 const appbar = document.querySelector('.mm-appbar');
-                const opposite = 'mm-appbar-opposite';
+                const dark = 'mm-theme-dark';
+                const light = 'mm-theme-light';
                 const colored = 'mm-appbar-colored';
 
-                if (appbar.classList.contains(colored)) appbar.classList.remove(colored); // colored -> themed
-                else if (appbar.classList.contains(opposite)) appbar.classList.replace(opposite, colored); // opposite -> colored
-                else appbar.classList.add(opposite); // themed → opposite
+                if (appbar.classList.contains(colored)) appbar.classList.replace(colored, dark); // colored -> dark
+                else if (appbar.classList.contains(dark)) appbar.classList.replace(dark, light); // dark -> light
+                else appbar.classList.replace(light, colored);                                   // light -> colored
             }
 
 

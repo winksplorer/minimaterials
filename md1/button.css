@@ -1,7 +1,4 @@
-.mm-md1 .mm-button-raised:hover, .mm-md1 .mm-button-flat:hover {
-    cursor: pointer;
-}
-
+/* all buttons */
 .mm-md1 .mm-button-raised, .mm-md1 .mm-button-flat {
     min-width: 64px;
     width: fit-content;
@@ -16,6 +13,11 @@
     border:0;
 }
 
+.mm-md1 .mm-button-raised:hover, .mm-md1 .mm-button-flat:hover {
+    cursor: pointer;
+}
+
+/* raised buttons */
 .mm-md1 .mm-button-raised {
     padding: 0 14px;
 
@@ -45,16 +47,11 @@
     background-color: var(--mm-primary-700);
 }
 
-
-.mm-md1 .mm-appbar-opposite .mm-button-raised {
-    background-color: var(--mm-opposite-card-bg);
-    color: var(--mm-opposite-title);
-}
-
 .mm-md1 .mm-button-raised:hover {
     box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
 }
 
+/* flat buttons */
 .mm-md1 .mm-button-flat {
     margin-left: -8px;
     padding: 0 8px;
