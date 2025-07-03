@@ -30,9 +30,6 @@ md1.updatePalette = function(role) {
     // set css vars accordingly
     for (const shade of Object.keys(md1.colors[family]))
         document.body.style.setProperty(`--mm-${role}-${shade}`, md1.colors[family][shade]);
-
-    // set css vars for whether white/black text should be used
-    for (const shade of Object.keys(md1.colors[family]))
         document.body.style.setProperty(`--mm-on-${role}-${shade}`, md1.shouldUseWhiteText(md1.colors[family][shade]) ? '#fff' : "#000");
 }
 
