@@ -28,9 +28,10 @@ md1.updatePalette = function(role) {
     if (!(family in md1.colors)) throw new Error(`minimaterials: cannot update ${role} colors, as colorfamily '${family}' does not exist`);
 
     // set css vars accordingly
-    for (const shade of Object.keys(md1.colors[family]))
+    for (const shade of Object.keys(md1.colors[family])) {
         document.body.style.setProperty(`--mm-${role}-${shade}`, md1.colors[family][shade]);
         document.body.style.setProperty(`--mm-on-${role}-${shade}`, md1.shouldUseWhiteText(md1.colors[family][shade]) ? '#fff' : "#000");
+    }
 }
 
 md1.bodyObserver = new MutationObserver(muts => {
