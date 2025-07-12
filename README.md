@@ -12,7 +12,7 @@ A tiny implementation of Material Design 1/2/3 for use in lightweight web apps. 
 
 It's similar to Google's Material Design Lite, but minimaterials aims to:
 - Support all Material Design versions (1, 2, and 3/You)
-- Be smaller than Material Design Lite (or at least MD1)
+- Be smaller than Material Design Lite
 - Be easier to write code for than Material Design Lite
 - Support dynamic theme switching
 
