@@ -24,8 +24,4 @@ for (const family of Object.keys(colors)) {
     }
 }
 
-let checksum = 0;
-for (const byte of bytes) checksum ^= byte;
-bytes.push(checksum);
-
 fs.writeFileSync('colors.bin', Uint8Array.from(bytes), null);
