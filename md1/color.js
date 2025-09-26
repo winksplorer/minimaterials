@@ -38,7 +38,7 @@ md1.updatePalette = function(role) {
 }
 
 md1.bodyObserver = new MutationObserver(muts => {
-    muts.forEach(() => 
+    muts.forEach(mut => 
         md1.roles.forEach(role => 
             md1.getColorClass(mut.oldValue, role) !== md1.getColorClass(mut.target.className, role) 
             ? md1.updatePalette(role) : null)
