@@ -3,7 +3,7 @@ VARIANTS := md1 md2 md3
 EXAMPLES := $(shell find doc/examples -type f -name '*.html')
 SCREENSHOTS := $(patsubst %.html,%.png,$(notdir $(EXAMPLES)))
 
-.PHONY: cleam all $(VARIANTS) combine screenshots 
+.PHONY: clean all $(VARIANTS) combine screenshots 
 
 all: $(VARIANTS) combine
 
