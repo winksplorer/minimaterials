@@ -24,27 +24,25 @@ eJCcYH2LVG56RVpkN0dPJjI4`.trim();
 md1.colors = md1.colors || {};
 md1.updatePalette = function(role) {
     // check for valid role, and get the requested family
-    if (!md1.roles.includes(role)) throw new Error(`minimaterials: cannot update ${role} colors, as the role does not exist`);
+    if (!md1.roles.includes(role)) throw new Error(`minimaterials: ${role}: role does not exist`);
     let family = md1.getColorClass(document.body.className, role);
 
     // check if the family exists
-    if (!(family in md1.colors)) throw new Error(`minimaterials: cannot update ${role} colors, as colorfamily '${family}' does not exist`);
+    if (!(family in md1.colors)) throw new Error(`minimaterials: ${role}: ${family}: color family does not exist`);
 
     // set css vars accordingly
-    for (const shade of Object.keys(md1.colors[family])) {
+    Object.keys(md1.colors[family]).forEach(shade => {
         document.body.style.setProperty(`--mm-${role}-${shade}`, md1.colors[family][shade]);
         document.body.style.setProperty(`--mm-on-${role}-${shade}`, md1.shouldUseWhiteText(md1.colors[family][shade]) ? '#fff' : "#000");
-    }
+    });
 }
 
 md1.bodyObserver = new MutationObserver(muts => {
-    for (const mut of muts) {
-        // check if we need to update colors
-        for (const role of md1.roles) {
-            if (md1.getColorClass(mut.oldValue, role) !== md1.getColorClass(mut.target.className, role))
-                md1.updatePalette(role);
-        }
-    }
+    muts.forEach(() => 
+        md1.roles.forEach(role => 
+            md1.getColorClass(mut.oldValue, role) !== md1.getColorClass(mut.target.className, role) 
+            ? md1.updatePalette(role) : null)
+    );
 });
 
 (function(){
@@ -82,7 +80,7 @@ md1.bodyObserver = new MutationObserver(muts => {
     document.head.appendChild(style);
 
     // load inital palettes
-    for (const role of md1.roles) md1.updatePalette(role);
+    md1.roles.forEach(role => md1.updatePalette(role));
     
     // re-enable transitions
     requestAnimationFrame(() => style.remove());

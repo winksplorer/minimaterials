@@ -10,11 +10,11 @@
 }
 
 .mm-theme-dark {
-    --mm-bg: #303030;
-    --mm-card-bg: #424242;
-    --mm-appbar-bg: #212121;
+    --mm-bg: #333;
+    --mm-card-bg: #444;
+    --mm-appbar-bg: #222;
     
-    --mm-title: rgba(255, 255, 255, 1);
+    --mm-title: #FFF;
     --mm-subtitle: rgba(255, 255, 255, 0.7);
     --mm-paragraph: var(--mm-title);
 }

@@ -11,9 +11,7 @@
 
     border-radius: 2px;
     border:0;
-}
 
-.mm-md1 .mm-button-raised:hover, .mm-md1 .mm-button-flat:hover {
     cursor: pointer;
 }
 

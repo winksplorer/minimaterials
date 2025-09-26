@@ -24,7 +24,6 @@
 .mm-md1 .mm-card small {
     margin-top: 10px;
     margin-bottom: -8px;
-    display: block;
     color: var(--mm-subtitle);
 }
 
