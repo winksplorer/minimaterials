@@ -83,7 +83,7 @@
                 // canvas handler
                 Array.from(document.querySelectorAll('canvas')).forEach(cv => {
                     const ctx = cv.getContext('2d');
-                    ctx.fillStyle = window.md1.colors[cv.parentElement.dataset.color]['500'];
+                    ctx.fillStyle = window.md1.colors[cv.parentElement.dataset.color]['500'][0];
                     ctx.fillRect(0, 0, cv.width, cv.height);
                 });
             })();
