@@ -15,25 +15,66 @@
     cursor: pointer;
 }
 
+.mm-md1 .mm-button-raised:disabled, .mm-md1 .mm-button-flat:disabled {
+    cursor: default;
+}
+
 /* raised buttons */
 .mm-md1 .mm-button-raised {
     padding: 0 14px;
 
-    background-color: var(--mm-secondary-500);
-    color: white;
+    background-color: var(--mm-card-bg);
+    color: var(--mm-title);
 
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
     transition: box-shadow 0.2s ease, background 0.2s ease;
 }
 
-.mm-md1 .mm-button-raised:active {
-    background-color: var(--mm-secondary-700)
+.mm-md1 .mm-button-raised:not(:disabled):hover {
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
 }
 
+.mm-md1 .mm-button-raised:not(:disabled):active {
+    background-color: var(--mm-appbar-bg)
+}
+
+/* raised buttons - primary colors */
+.mm-md1 .mm-button-raised.mm-button-colored-primary {
+    background-color: var(--mm-primary-500);
+    color: var(--mm-on-primary-500);
+}
+
+.mm-md1 .mm-button-raised.mm-button-colored-primary:not(:disabled):active {
+    background-color: var(--mm-primary-700);
+}
+
+/* raised buttons - secondary colors */
+.mm-md1 .mm-button-raised.mm-button-colored {
+    background-color: var(--mm-secondary-500);
+    color: var(--mm-on-secondary-500);
+}
+
+.mm-md1 .mm-button-raised.mm-button-colored:not(:disabled):active {
+    background-color: var(--mm-secondary-700);
+}
+
+/* raised buttons - disabled */
+.mm-md1 .mm-button-raised:disabled {
+    background-color: rgba(0,0,0,0.12);
+    color: rgba(0,0,0,0.26);
+
+    box-shadow: none;
+}
+
+.mm-md1.mm-theme-dark .mm-button-raised:disabled {
+    background-color: rgba(255,255,255,0.12);
+    color: rgba(255,255,255,0.30);
+}
+
+/* raised buttons - appbar. TODO: REMOVE */
 .mm-md1 .mm-appbar .mm-button-raised {
     background-color: var(--mm-card-bg);
     color: var(--mm-title);
-    margin-left: 8px;
 }
 
 .mm-md1 .mm-appbar-colored .mm-button-raised {
@@ -45,25 +86,40 @@
     background-color: var(--mm-primary-700);
 }
 
-.mm-md1 .mm-button-raised:hover {
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
-}
-
 /* flat buttons */
 .mm-md1 .mm-button-flat {
     margin-left: -8px;
     padding: 0 8px;
 
     background-color: transparent;
-    color: var(--mm-secondary-500);
+    color: var(--mm-title);
 
     transition: background 0.2s ease, color 0.2s ease;
 }
 
-.mm-md1 .mm-button-flat:hover {
+.mm-md1 .mm-button-flat:not(:disabled):hover {
     background-color: rgba(153, 153, 153, 0.16)
 }
 
-.mm-md1 .mm-button-flat:active {
+.mm-md1 .mm-button-flat:not(:disabled):active {
     background-color: rgba(153, 153, 153, 0.35)
+}
+
+/* flat buttons - primary colors */
+.mm-md1 .mm-button-flat.mm-button-colored-primary {
+    color: var(--mm-primary-500);
+}
+
+/* flat buttons - secondary colors */
+.mm-md1 .mm-button-flat.mm-button-colored {
+    color: var(--mm-secondary-500);
+}
+
+/* flat buttons - disabled */
+.mm-md1 .mm-button-flat:disabled {
+    color: rgba(0,0,0,0.26);
+}
+
+.mm-md1.mm-theme-dark .mm-button-flat:disabled {
+    color: rgba(255,255,255,0.30);
 }

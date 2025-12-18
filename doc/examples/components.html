@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>minimaterials md1 example - Components</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="../../mm-md1.min.css">
+        <script src="../../mm-md1.min.js" defer></script>
+    </head>
+    <body class="mm mm-md1 mm-theme-light mm-primary-teal mm-secondary-deep-orange">
+        <header class="mm-appbar mm-appbar-colored">
+            <div class="mm-appbar-left">
+                <h2>Component Playground</h2>
+            </div>
+
+            <div class="mm-appbar-right">
+                <button class="mm-button-raised" onclick="appbarCycle()">Appbar dark/light/colored</button>
+                <button class="mm-button-raised" onclick="darkModeToggle()">Page dark/light</button>
+            </div>
+        </header>
+
+        <div class="mm-content mm-content-grid">
+            <div class="mm-card mm-card-pwidth">
+                <h1>About this site</h1>
+                <small>Small text here</small>
+                <p>This is an example website for testing all the components in minimaterials MD1.</p>
+            </div>
+
+            <div class="mm-card">
+                <h1>Raised buttons</h1>
+                <p>Clickable, backgrounded things.</p>
+                <div class="mm-card-bottom">
+                    <button class="mm-button-raised">Themed</button>
+                    <button class="mm-button-raised mm-button-colored-primary">Primary</button>
+                    <button class="mm-button-raised mm-button-colored">Secondary</button>
+                    <button class="mm-button-raised" disabled>Disabled</button>
+                </div>
+            </div>
+
+            <div class="mm-card">
+                <h1>Flat buttons</h1>
+                <p>Clickable, non-backgrounded things. Almost like text.</p>
+                <div class="mm-card-bottom">
+                    <button class="mm-button-flat">Themed</button>
+                    <button class="mm-button-flat mm-button-colored-primary">Primary</button>
+                    <button class="mm-button-flat mm-button-colored">Secondary</button>
+                    <button class="mm-button-flat" disabled>Disabled</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- button functions -->
+        <script>
+            function appbarCycle() {
+                const appbar = document.querySelector('.mm-appbar');
+                const dark = 'mm-theme-dark';
+                const light = 'mm-theme-light';
+                const colored = 'mm-appbar-colored';
+
+                if (appbar.classList.contains(colored)) appbar.classList.replace(colored, dark); // colored -> dark
+                else if (appbar.classList.contains(dark)) appbar.classList.replace(dark, light); // dark -> light
+                else appbar.classList.replace(light, colored);                                   // light -> colored
+            }
+
+            darkModeToggle = () => ['mm-theme-dark', 'mm-theme-light'].forEach(c => document.body.classList.toggle(c));
+        </script>
+    </body>
+</html>
