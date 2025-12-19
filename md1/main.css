@@ -33,7 +33,7 @@
     gap: 8px;
 }
 
-.mm-md1 .mm-content-grid > * {
+.mm-md1 .mm-content-grid > *:not(.mm-button-fab) {
     flex: 1 1 auto;
     min-width: 300px;
 }

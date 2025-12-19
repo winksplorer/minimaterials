@@ -123,3 +123,70 @@
 .mm-md1.mm-theme-dark .mm-button-flat:disabled {
     color: rgba(255,255,255,0.30);
 }
+
+/* floating action button containers */
+.mm-md1 .mm-button-fab-container {
+    position: absolute;
+    right: 16px;
+    bottom: 16px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.mm-md1 .mm-button-fab-container-row {
+    flex-direction: row;
+}
+
+.mm-md1 .mm-button-fab-container > .mm-button-fab {
+    position: static;
+}
+
+/* floating action buttons */
+.mm-md1 .mm-button-fab {
+    width: 56px;
+    height: 56px;
+
+    position: absolute;
+    right: 16px;
+    bottom: 16px;
+
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0 6px 6px rgba(0, 0, 0, 0.25);
+
+    background-color: var(--mm-card-bg);
+    color: var(--mm-title);
+
+    transition: box-shadow 0.2s ease, background 0.2s ease;
+}
+
+
+.mm-md1 .mm-button-fab:hover {
+    background-color: var(--mm-appbar-bg)
+}
+
+.mm-md1 .mm-button-fab:active {
+    box-shadow: 0 10px 9px rgba(0, 0, 0, 0.25);
+}
+
+/* floating action buttons - primary colors */
+.mm-md1 .mm-button-fab.mm-button-colored-primary {
+    background-color: var(--mm-primary-500);
+    color: var(--mm-on-primary-500);
+}
+
+.mm-md1 .mm-button-fab.mm-button-colored-primary:hover {
+    background-color: var(--mm-primary-700);
+}
+
+/* floating action buttons - secondary colors */
+.mm-md1 .mm-button-fab.mm-button-colored {
+    background-color: var(--mm-secondary-500);
+    color: var(--mm-on-secondary-500);
+}
+
+.mm-md1 .mm-button-fab.mm-button-colored:hover {
+    background-color: var(--mm-secondary-700);
+}
